@@ -1,0 +1,5 @@
+Nacos:
+  Host: 10.2.171.13
+  Port: 8848
+  DataId: wzy
+  Group: DEFAULT_GROUP

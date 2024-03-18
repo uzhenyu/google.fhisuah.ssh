@@ -1,0 +1,85 @@
+syntax = "proto3";
+
+package goods;
+option go_package="./goods";
+
+service Goods {
+  rpc GetGood       (GetGoodRequest)       returns (GetGoodResponse);
+  rpc GetGoodByName (GetGoodsByNameRequest) returns (GetGoodsByNameResponse);
+  rpc GetGoods      (GetGoodsRequest)       returns (GetGoodsResponse);
+  rpc CreateGood    (CreateGoodRequest)     returns (CreateGoodResponse);
+  rpc DeleteGood    (DeleteGoodRequest)     returns (DeleteGoodResponse);
+  rpc UpdateGood    (UpdateGoodRequest)     returns (UpdateGoodResponse);
+  rpc UpdateStock   (UpdateStockRequest)    returns (UpdateStockResponse);
+}
+
+message GoodsInfo {
+  int64  Id       = 10;
+  string Name     = 20;
+  string Price    = 30;
+  string VipPrice = 40;
+  string Img      = 50;
+  int64  Stock    = 60;
+  int64  Type     = 70;
+  int64  IdGoods  = 80;
+}
+
+message GetGoodRequest {
+  int64 Id = 10;
+}
+
+message GetGoodResponse {
+  GoodsInfo Info = 10;
+}
+
+message GetGoodsByNameRequest {
+  string Name = 10;
+}
+
+message GetGoodsByNameResponse {
+  GoodsInfo Info = 10;
+}
+
+message GetGoodsRequest {
+  int64 Offset = 10;
+  int64 Limit  = 20;
+  int64 Type   = 30;
+}
+
+message GetGoodsResponse {
+  repeated GoodsInfo Info = 10;
+  int64    Total          = 20;
+}
+
+message CreateGoodRequest {
+  GoodsInfo Info = 10;
+}
+
+message CreateGoodResponse {
+  GoodsInfo Info = 10;
+}
+
+message DeleteGoodRequest {
+  int64 Id = 10;
+}
+
+message DeleteGoodResponse {
+  GoodsInfo Info = 10;
+}
+
+message UpdateGoodRequest {
+  GoodsInfo Info = 10;
+}
+
+message UpdateGoodResponse {
+  GoodsInfo Info = 10;
+}
+
+message UpdateStockRequest {
+  int64 Id  = 10;
+  int64 Num = 20;
+}
+
+message UpdateStockResponse {
+  GoodsInfo Info = 10;
+}

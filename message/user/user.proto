@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package user;
+option go_package="./user";
+
+
+service User {
+  rpc GetUser           (GetUserRequest)           returns(GetUserResponse);
+  rpc GetUserByTel      (GetUserByTelRequest)      returns(GetUserByTelResponse);
+  rpc GetUserByUsername (GetUserByUsernameRequest) returns(GetUserByUsernameResponse);
+  rpc CreateUsers       (CreateUsersRequest)       returns(CreateUsersResponse);
+  rpc DeleteUsers       (DeleteUsersRequest)       returns(DeleteUsersResponse);
+  rpc UpdateUsers       (UpdateUsersRequest)       returns(UpdateUsersResponse);
+}
+
+message UserInfo {
+  int64  Id       = 10;
+  string Username = 20;
+  string Password = 30;
+  string Tel      = 40;
+}
+
+message GetUserRequest {
+  int64 Id = 10;
+}
+
+message GetUserResponse {
+  UserInfo Info = 10;
+}
+
+message GetUserByTelRequest {
+  string Tel = 10;
+}
+
+message GetUserByTelResponse {
+  UserInfo Info = 10;
+}
+
+message GetUserByUsernameRequest {
+  string Username = 10;
+}
+
+message GetUserByUsernameResponse {
+  UserInfo Info = 10;
+}
+
+message GetUsersRequest {
+  int64 Offset = 10;
+  int64 Limit  = 20;
+}
+
+message GetUsersResponse {
+  repeated UserInfo Infos = 10;
+  int64             Total = 20;
+}
+
+message CreateUsersRequest {
+  UserInfo Info = 10;
+}
+
+message CreateUsersResponse {
+  UserInfo Info = 10;
+}
+
+message DeleteUsersRequest {
+  int64 Id = 10;
+}
+
+message DeleteUsersResponse {
+
+}
+
+message UpdateUsersRequest {
+  UserInfo Info = 10;
+}
+
+message UpdateUsersResponse {
+  UserInfo Info = 10;
+}
